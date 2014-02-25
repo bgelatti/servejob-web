@@ -1,0 +1,19 @@
+{
+  "name": "servejob-client-web",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:koshoo/servejob-client-web.git"
+  },
+  "author": "",
+  "license": "Copyright",
+  "dependencies": {
+    "express": "^3.4.8",
+    "hjs": "0.0.6"
+  }
+}

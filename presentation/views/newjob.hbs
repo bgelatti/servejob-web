@@ -1,0 +1,57 @@
+<div class="container container-template">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form role="form" action="http://localhost:7050/jobs/savejob" method="POST">
+                <div class="form-group">
+                <label>Company name</label>
+                    <input type="text" name="compName" class="form-control" required="true" placeholder="Company">
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" class="form-control" name="compMail" required="true" placeholder="E-Mail">
+                </div>
+                <div class="form-group">
+                    <label>Site</label>
+                    <input type="text" class="form-control" name="compWeb" required="true" placeholder="Site">
+                </div>
+                <div class="form-group">
+                    <label>Time to expire</label>
+                    <select required="true" name="expireDate">
+                        <option value="3">3 Month</option>
+                        <option value="6">6 Month</option>
+                        <option value="12">12 Month</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Delete password</label>
+                    <input type="password" class="form-control" name="deletePassword" required="true" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label>Job title</label>
+                    <input type="text" class="form-control" name="jobTitle" required="true" placeholder="Job Title">
+                </div>
+                <div class="form-group">
+                    <label>Job type</label>
+                    <select required="true" name="jobType">
+                        <option value="Volunteer">Volunteer</option>
+                        <option value="Remote">Remote</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Full-time">Full-time</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Job Location</label>
+                    <input type="text" class="form-control" name="jobLocation" required="true" placeholder="Job Location">
+                </div>
+                <div class="form-group">
+                    <label>Job Description</label>
+                    <textarea rows="4" cols="50" name="jobDesc" required="true" style="margin: 0px; width: 558px; height: 91px;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
