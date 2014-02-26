@@ -11,7 +11,11 @@ servejob.controller('newjob', function($scope, $http) {
 
         $http(req_newjob).success(function (data) {
             $scope.job = {};
-            $scope.response = data;
+            if (!data.status){
+                $scope.response = data.message;
+            } else{
+                $scope.response = data.message;
+            }
         });
     };
 });
