@@ -1,13 +1,31 @@
 <div class="container container-template">
-    <form role="form" action="http://localhost:7050/jobs/savejob" method="POST">
-        <div class="form-group">
-        <label for="exampleInputEmail1">Nome da empresa</label>
-            <input type="text" name="compName" class="form-control" id="exampleInputEmail1" required="true" placeholder="Empresa">
+    <div class="row" ng-controller="list_job">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="home-div-principal">
+                <div class="home-div-space">
+                     <h2 class="home-title">Jobs</h2>
+                </div>
+                <div class="home-div-jobs-list" ng-repeat="job in jobs">
+                    <a href="#">
+                        <div class="home-div-space home-div-job">
+                            <div class="row">
+                                <div class="col-md-12">&#123;&#123;job.jobTitle&#125;&#125;</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">&#123;&#123;job.jobType&#125;&#125; at &#123;&#123;job.compName&#125;&#125;</div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-2">&#123;&#123;created_on&#125;&#125;</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">E-mail</label>
-            <input type="email" class="form-control" name="compMail" id="exampleInputPassword1" required="true" placeholder="E-Mail">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+        <div class="col-md-3"></div>
+    </div>
 </div>
+
+{{#contentFor "pageScripts"}}
+    <script src="/js/app/home.js"></script>
+{{/contentFor}}

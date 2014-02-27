@@ -50,9 +50,12 @@
                     <textarea rows="4" cols="50" ng-model="job.jobDesc" required="true" style="margin: 0px; width: 558px; height: 91px;"></textarea>
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
-                <p>&#123;&#123;response&#125;&#125;</p>
             </form>
         </div>
         <div class="col-md-3"></div>
     </div>
 </div>
+
+{{#contentFor "pageScripts"}}
+    <script src="/js/app/newjob.js"></script>
+{{/contentFor}}

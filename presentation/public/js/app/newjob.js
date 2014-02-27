@@ -10,12 +10,19 @@ servejob.controller('newjob', function($scope, $http) {
         }
 
         $http(req_newjob).success(function (data) {
-            $scope.job = {};
-            if (!data.status){
-                $scope.response = data.message;
-            } else{
-                $scope.response = data.message;
+            if (data.status) {
+                window.location = "/";
             }
+
+            var message = "";
+            if (angular.isArray(data.message)) {
+                angular.forEach(data.message, function (value) {
+                    message = message + value + ' ';
+                });
+            } else {
+                message = data.message;
+            }
+            $('#statustop').text(message);
         });
     };
 });

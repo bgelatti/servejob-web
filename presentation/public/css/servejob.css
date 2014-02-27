@@ -4,3 +4,46 @@ body {
 .container-template {
   padding: 40px 15px;
 }
+
+.status-message-top {
+    text-align: center;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.home-div-principal {
+    background-color: #FAFAFA;
+    border-radius: 10px;
+    width: 100%;
+    min-height: 300px;
+
+    border: 1px solid #e1e8ed;
+    border-radius: 6px 6px 0 0;
+    background-clip: padding-box;
+}
+.home-div-space {
+    min-height: 20px;
+    padding: 0px 10px;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 5px 5px 0 0;
+}
+.home-title {
+    color: #66757f;
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 22px;
+}
+.home-div-job {
+    cursor: pointer;
+}
+.home-div-job:hover {
+    background-color: #ECECEC;
+}
+.home-div-jobs-list {
+}
+.home-div-jobs-list a {
+    color: #000;
+}
+
+.home-job-title {
+
+}
