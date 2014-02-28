@@ -4,10 +4,10 @@
         <div class="col-md-6">
             <div class="home-div-principal">
                 <div class="home-div-space">
-                     <h2 class="home-title">Jobs</h2>
+                     <h2 class="home-title">Detail</h2>
                 </div>
                 <div class="home-div-jobs-list" ng-repeat="job in jobs">
-                    <a href="#">
+                    <a href="/detail?id=&#123;&#123;job._id&#125;&#125;">
                         <div class="home-div-space home-div-job">
                             <div class="row">
                                 <div class="col-md-12">&#123;&#123;job.jobTitle&#125;&#125;</div>
@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="col-md-9">&#123;&#123;job.jobType&#125;&#125; at &#123;&#123;job.compName&#125;&#125;</div>
                                 <div class="col-md-1"></div>
-                                <div class="col-md-2">&#123;&#123;created_on&#125;&#125;</div>
+                                <div class="col-md-2">&#123;&#123;job.created_on&#125;&#125;</div>
                             </div>
                         </div>
                     </a>

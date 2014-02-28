@@ -8,6 +8,9 @@ servejob.controller('list_job', function($scope, $http) {
     };
 
     $http(req_list_job).success(function (data) {
+        angular.forEach(data.result, function(key){
+            key.created_on = moment(key.created_on).format("MMM Do");
+        });
         $scope.jobs = data.result;
     });
 });
