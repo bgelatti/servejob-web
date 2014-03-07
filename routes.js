@@ -1,13 +1,11 @@
 function renderview(view) {
     return function (req, res) {
-        res.render(view, {"query": req.query});
+        res.render(view);
     };
 }
 
 function routes($) {
-    $.get('/', renderview('home'));
-    $.get('/newjob', renderview('newjob'));
-    $.get('/detail', renderview('details'));
+    $.get('/', renderview('layout'));
 }
 
 module.exports = routes;

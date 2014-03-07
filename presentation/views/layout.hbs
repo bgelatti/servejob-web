@@ -4,7 +4,8 @@
 <body>
     {{> menutop}}
     {{> status}}
-    {{{ body }}}
+    {{> loadingPage}}
+    <div id="content-page" style="display: none;" ng-view></div>
 </body>
 {{> scripts}}
 </html>

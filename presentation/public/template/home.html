@@ -7,15 +7,15 @@
                      <h2 class="home-title">Detail</h2>
                 </div>
                 <div class="home-div-jobs-list" ng-repeat="job in jobs">
-                    <a href="/detail?id=&#123;&#123;job._id&#125;&#125;">
+                    <a href="/#/detail?id={{job._id}}">
                         <div class="home-div-space home-div-job">
                             <div class="row">
-                                <div class="col-md-12">&#123;&#123;job.jobTitle&#125;&#125;</div>
+                                <div class="col-md-12">{{job.jobTitle}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-9">&#123;&#123;job.jobType&#125;&#125; at &#123;&#123;job.compName&#125;&#125;</div>
+                                <div class="col-md-9">{{job.jobType}} at {{job.compName}}</div>
                                 <div class="col-md-1"></div>
-                                <div class="col-md-2">&#123;&#123;job.created_on&#125;&#125;</div>
+                                <div class="col-md-2">{{job.created_on}}</div>
                             </div>
                         </div>
                     </a>
@@ -25,7 +25,3 @@
         <div class="col-md-3"></div>
     </div>
 </div>
-
-{{#contentFor "pageScripts"}}
-    <script src="/js/app/home.js"></script>
-{{/contentFor}}

@@ -1,31 +1,30 @@
 <div class="container container-template">
     <div class="row" ng-controller="detail_job">
-        <input type="hidden" value="{{query.id}}" id="jobId"/>
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="home-div-principal">
                 <div class="home-div-space">
-                   <h2 class="home-title">&#123;&#123;job.jobTitle&#125;&#125;</h2>
+                   <h2 class="home-title">{{job.jobTitle}}</h2>
                </div>
                <div class="home-div-jobs-list">
                         <div class="home-div-space home-div-job">
                             <div class="row">
-                                <div class="col-md-12">&#123;&#123;job.jobType&#125;&#125;</div>
+                                <div class="col-md-12">{{job.jobType}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">&#123;&#123;job.compName&#125;&#125;</div>
+                                <div class="col-md-12">{{job.compName}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">&#123;&#123;job.jobLocation&#125;&#125;</div>
+                                <div class="col-md-12">{{job.jobLocation}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">&#123;&#123;job.compWeb&#125;&#125;</div>
+                                <div class="col-md-12">{{job.compWeb}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">&#123;&#123;job.compMail&#125;&#125;</div>
+                                <div class="col-md-12">{{job.compMail}}</div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">&#123;&#123;job.jobDesc&#125;&#125;</div>
+                                <div class="col-md-12">{{job.jobDesc}}</div>
                             </div>
                         </div>
                     </a>
@@ -36,7 +35,3 @@
        <div class="col-md-3"></div>
    </div>
 </div>
-
-{{#contentFor "pageScripts"}}
-    <script src="/js/app/details.js"></script>
-{{/contentFor}}

@@ -12,9 +12,7 @@ var server  = express();
  * View Configuration.
  */
  var hbsconf = {
-    'partialsDir'  : __dirname + '/presentation/views/partials',
-    'defaultLayout': __dirname + '/presentation/views/layout/default',
-    'layoutsDir'   : __dirname + '/presentation/views/layout'
+    'partialsDir'  : __dirname + '/presentation/views/partials'
 };
 server.engine('hbs', hbs.express3(hbsconf));
 server.set('view engine', 'hbs');
