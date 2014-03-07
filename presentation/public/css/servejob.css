@@ -1,5 +1,5 @@
 body {
-  padding-top: 50px;
+  padding-top: 0px;
 }
 .container-template {
   padding: 40px 15px;
@@ -10,7 +10,7 @@ body {
     border-radius: 0px 0px 10px 10px;
 }
 
-.home-div-principal {
+.servejob-div-principal {
     background-color: #FAFAFA;
     border-radius: 10px;
     width: 100%;
@@ -19,14 +19,15 @@ body {
     border: 1px solid #e1e8ed;
     border-radius: 6px 6px 0 0;
     background-clip: padding-box;
+    padding: 15px;
 }
-.home-div-space {
+.servejob-div-space {
     min-height: 20px;
     padding: 0px 10px;
     border-bottom: 1px solid #e8e8e8;
     border-radius: 5px 5px 0 0;
 }
-.home-title {
+.servejob-title {
     color: #66757f;
     font-size: 22px;
     font-weight: 200;
@@ -38,17 +39,31 @@ body {
 .home-div-job:hover {
     background-color: #ECECEC;
 }
-.home-div-jobs-list {
-}
-.home-div-jobs-list a {
-    color: #000;
-}
-
-.home-job-title {
-
+.job-link, .job-link:hover, .job-link:visited {
+    color: #CF7E48;
 }
 
 .loading-div {
     margin-top: 25%;
     text-align: center;
+}
+
+.detail-jobDesc {
+    white-space: pre-wrap;
+}
+
+.servejob-details .servejob-title {
+    font-size: 17px;
+}
+
+.float-job-title-div {
+    height: 60px;
+}
+
+.float-titleservejob {
+    float: left;
+}
+
+.float-buttomservejob {
+    float: right;
 }

@@ -2,36 +2,74 @@
     <div class="row" ng-controller="detail">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <div class="home-div-principal">
-                <div class="home-div-space">
-                   <h2 class="home-title">{{job.jobTitle}}</h2>
-               </div>
-               <div class="home-div-jobs-list">
-                        <div class="home-div-space home-div-job">
-                            <div class="row">
-                                <div class="col-md-12">{{job.jobType}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">{{job.compName}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">{{job.jobLocation}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">{{job.compWeb}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">{{job.compMail}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">{{job.jobDesc}}</div>
-                            </div>
-                        </div>
-                    </a>
+            <div class="servejob-div-principal">
+                <div class="servejob-div-space float-job-title-div">
+                    <div class="float-titleservejob">
+                        <h2 class="servejob-title">{{job.jobTitle}}</h2>
+                    </div>
+                    <div class="float-buttomservejob">
+                        <a href="/#" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-chevron-left"></span> Back
+                        </a>
+                    </div>
                 </div>
-           </div>
-       </div>
-       <button ng-click="clickDelete()">tesste</button>
-       <div class="col-md-3"></div>
-   </div>
+                <div class="servejob-div-box servejob-details">
+                    <div class="servejob-div-space">
+                        <h2 class="servejob-title">Type</h2>
+                    </div>
+                    <div class="servejob-div-space">
+                        <div class="row">
+                            <div class="col-md-12">{{job.jobType}}</div>
+                        </div>
+                    </div>
+                    <div class="servejob-div-space">
+                        <h2 class="servejob-title">Company Name</h2>
+                    </div>
+                    <div class="servejob-div-space">
+                        <div class="row">
+                            <div class="col-md-12">{{job.compName}}</div>
+                        </div>
+                    </div>
+                    <div class="servejob-div-space">
+                        <h2 class="servejob-title">Location</h2>
+                    </div>
+                    <div class="servejob-div-space">
+                        <div class="row">
+                            <div class="col-md-12">{{job.jobLocation}}</div>
+                        </div>
+                    </div>
+                    <div class="servejob-div-space">
+                        <h2 class="servejob-title">Website</h2>
+                    </div>
+                    <div class="servejob-div-space">
+                        <div class="row">
+                            <div class="col-md-12">{{job.compWeb}}</div>
+                        </div>
+                    </div>
+                    <div class="servejob-div-space">
+                        <h2 class="servejob-title">Mail</h2>
+                    </div>
+                    <div class="servejob-div-space">
+                        <div class="row">
+                            <div class="col-md-12">{{job.compMail}}</div>
+                        </div>
+                    </div>
+                    <div class="servejob-div-space">
+                        <h2 class="servejob-title">Description</h2>
+                    </div>
+                    <div class="servejob-div-space">
+                        <div class="row">
+                            <div class="col-md-12 detail-jobDesc">{{job.jobDesc}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="text-align: center; margin-top: 10px;">
+                    <button ng-click="clickDelete()" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-remove"></span> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
 </div>

@@ -50,6 +50,7 @@
 
         $scope.clickDelete = function(){
             var pass = prompt('Type your Password');
+            if (!pass) { return; }
 
             var req_delete_job = {
                 "method": "delete",

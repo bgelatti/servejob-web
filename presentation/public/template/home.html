@@ -2,15 +2,22 @@
     <div class="row" ng-controller="home">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <div class="home-div-principal">
-                <div class="home-div-space">
-                     <h2 class="home-title">Detail</h2>
+            <div class="servejob-div-principal">
+                <div class="servejob-div-space float-job-title-div">
+                    <div class="float-titleservejob">
+                        <h2 class="servejob-title">Jobs</h2>
+                    </div>
+                    <div class="float-buttomservejob">
+                        <a href="/#/newjob" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-plus"></span> New Job
+                        </a>
+                    </div>
                 </div>
-                <div class="home-div-jobs-list" ng-repeat="job in jobs">
-                    <a href="/#/detail?id={{job._id}}">
-                        <div class="home-div-space home-div-job">
+                <div class="servejob-div-box" ng-repeat="job in jobs">
+                    <a href="/#/detail?id={{job._id}}" class="job-link">
+                        <div class="servejob-div-space home-div-job">
                             <div class="row">
-                                <div class="col-md-12">{{job.jobTitle}}</div>
+                                <div class="col-md-12" style="font-size: 16px;">{{job.jobTitle}}</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-9">{{job.jobType}} at {{job.compName}}</div>
