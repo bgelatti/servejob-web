@@ -1,4 +1,4 @@
-(function (angular) {
+(function (angular, config) {
     var servejob = angular.module('servejob', ['ngRoute']);
 
     servejob.config(function ($routeProvider) {
@@ -24,7 +24,7 @@
         loadingPage(true);
         var req_list_job = {
             "method": "get",
-            "url": "http://localhost:7050/jobs/getalljobs",
+            "url": config.api_route + "/jobs/getalljobs",
             "cache": true
         };
 
@@ -42,7 +42,7 @@
         var id = $routeParams.id;
         var req_list_job = {
             "method": "get",
-            "url": "http://localhost:7050/jobs/getbyid/" + id,
+            "url": config.api_route + "/jobs/getbyid/" + id,
             "cache": false
         };
 
@@ -56,7 +56,7 @@
 
             var req_delete_job = {
                 "method": "delete",
-                "url": "http://localhost:7050/jobs/delete/" + pass + "/" + id,
+                "url": config.api_route + "/jobs/delete/" + pass + "/" + id,
                 "cache": false
             };
 
@@ -74,7 +74,7 @@
         $scope.submit = function(job) {
             var req_newjob = {
                 "method": "post",
-                "url": "http://localhost:7050/jobs/savejob",
+                "url": config.api_route + "/jobs/savejob",
                 "cache": false,
                 "data": job
             }
@@ -97,7 +97,7 @@
         };
     });
 
-}(angular));
+}(angular, window.servejob));
 
 function loadingPage(boolShow) {
     var loadpage = document.getElementById("loading-page");

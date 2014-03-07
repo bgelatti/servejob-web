@@ -1,6 +1,11 @@
+var config  = require('./configuration');
+
 function renderview(view) {
     return function (req, res) {
-        res.render(view);
+        var model = {
+            "config": config
+        };
+        res.render(view, model);
     };
 }
 
