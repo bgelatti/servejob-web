@@ -8,19 +8,16 @@
                 templateUrl: "/template/home.html"
             })
             .when('/detail', {
-                controller: "home",
+                controller: "detail",
                 templateUrl: "/template/details.html"
             })
             .when('/newjob', {
-                controller: "home",
+                controller: "newjob",
                 templateUrl: "/template/newjob.html"
             })
     });
 
     servejob.controller('home', function($scope, $http) {
-    });
-
-    servejob.controller('list_job', function($scope, $http) {
         loadingPage(true);
         var req_list_job = {
             "method": "get",
@@ -37,7 +34,7 @@
         });
     });
 
-    servejob.controller('detail_job', function($scope, $http, $routeParams) {
+    servejob.controller('detail', function($scope, $http, $routeParams) {
         loadingPage(true);
         var id = $routeParams.id;
         var req_list_job = {
@@ -71,6 +68,7 @@
     });
 
     servejob.controller('newjob', function($scope, $http) {
+        loadingPage(false);
         $scope.submit = function(job) {
             var req_newjob = {
                 "method": "post",
