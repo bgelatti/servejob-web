@@ -17,10 +17,18 @@
                     <a href="/#/detail?id={{job._id}}" class="job-link">
                         <div class="servejob-div-space home-div-job">
                             <div class="row">
-                                <div class="col-md-12" style="font-size: 16px;">{{job.jobTitle}}</div>
+                                <div class="col-md-12 jobtitle">
+                                    <strong>{{job.jobTitle}}</strong>
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-9">{{job.jobType}} at {{job.compName}}</div>
+                                <div class="col-md-9">
+                                    <ul class="list-inline">
+                                        <li class="{{job.jobType}}"><small>{{job.jobType}}</small></li>
+                                        <li><small><strong>-</strong></small></li>
+                                        <li class="job-company-name-home"><small>{{job.compName}}</small></li>
+                                    </ul>
+                                </div>
                                 <div class="col-md-1"></div>
                                 <div class="col-md-2">{{job.created_on}}</div>
                             </div>
