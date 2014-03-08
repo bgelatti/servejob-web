@@ -31,6 +31,7 @@
                         <div class="form-group">
                             <label>Time to expire</label>
                             <select required="true" ng-model="job.expireDate" class="form-control input-sm">
+                                <option value="" disabled="true">Please select</option>
                                 <option value="3">3 Month</option>
                                 <option value="6">6 Month</option>
                                 <option value="12">12 Month</option>
@@ -47,6 +48,7 @@
                         <div class="form-group">
                             <label>Job type</label>
                             <select required="true" ng-model="job.jobType" class="form-control input-sm">
+                                <option value="" disabled="true">Please select</option>
                                 <option value="Volunteer">Volunteer</option>
                                 <option value="Remote">Remote</option>
                                 <option value="Freelance">Freelance</option>
