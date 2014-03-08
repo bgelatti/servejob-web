@@ -61,7 +61,7 @@ a:focus {
 }
 
 .loading-div {
-    margin-top: 25%;
+    margin-top: 105px;
     text-align: center;
 }
 
@@ -96,11 +96,9 @@ a:focus {
     border-top: 1px dashed #dcdcdc;
     padding: 25px;
 }
-#content-page {
+#content-page, #loading-page {
     margin-top: -30px;
 }
-@media (max-width: 680px) {
-    .img-logo {
-        width: 374px;
-    }
+.div-img-header {
+    padding: 15px;
 }
