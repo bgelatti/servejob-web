@@ -7,13 +7,21 @@
                 controller: "home",
                 templateUrl: "/template/home.html"
             })
-            .when('/detail', {
+            .when('/job/:permalink', {
                 controller: "detail",
                 templateUrl: "/template/details.html"
             })
             .when('/newjob', {
                 controller: "newjob",
                 templateUrl: "/template/newjob.html"
+            })
+            .when('/404', {
+                controller: "error404",
+                templateUrl: "/template/404.html"
+            })
+            .otherwise({
+                controller: "error404",
+                templateUrl: "/template/404.html"
             })
     });
 
@@ -36,14 +44,18 @@
 
     servejob.controller('detail', function($scope, $http, $routeParams) {
         loadingPage(true);
-        var id = $routeParams.id;
+        var permalink = $routeParams.permalink;
         var req_list_job = {
             "method": "get",
-            "url": config.api_route + "/jobs/getbyid/" + id,
+            "url": config.api_route + "/jobs/getbypermalink/" + permalink,
             "cache": false
         };
 
         $http(req_list_job).success(function (data) {
+            if (!data.result) {
+                window.location = "/#/404";
+                return;
+            }
             $scope.job = data.result;
             loadingPage(false);
         });
@@ -54,7 +66,7 @@
 
             var req_delete_job = {
                 "method": "delete",
-                "url": config.api_route + "/jobs/delete/" + pass + "/" + id,
+                "url": config.api_route + "/jobs/delete/" + pass + "/" + $scope.job._id,
                 "cache": false
             };
 
@@ -71,6 +83,10 @@
     servejob.controller('newjob', function($scope, $http) {
         loadingPage(false);
         $scope.submit = function(job) {
+            if (job.deletePassword !== job.confirmDeletePassword) {
+                job.status = "Passwords must be identical";
+                return;
+            }
             var req_newjob = {
                 "method": "post",
                 "url": config.api_route + "/jobs/savejob",
@@ -80,7 +96,9 @@
 
             $http(req_newjob).success(function (data) {
                 if (data.status) {
-                    window.location = "/";
+                    setTimeout(function(){
+                        window.location = "/";
+                    }, 1500);
                 }
 
                 var message = "";
@@ -91,9 +109,13 @@
                 } else {
                     message = data.message;
                 }
-                $('#statustop').text(message);
+                job.status = message;
             });
         };
+    });
+
+    servejob.controller('error404', function($scope, $http) {
+        loadingPage(false);
     });
 
 }(angular, window.servejob));

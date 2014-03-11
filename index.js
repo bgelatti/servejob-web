@@ -33,6 +33,10 @@ server.use(express.urlencoded());
 server.use(express.json());
 server.use(express.methodOverride());
 server.use(server.router);
+server.use(function(req, res, next){
+    res.status(404);
+    res.redirect("/#/404");
+});
 
 /**
  * Routes Configuration.
