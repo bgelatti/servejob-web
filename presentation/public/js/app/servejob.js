@@ -61,6 +61,7 @@
             job.created_on = moment(job.created_on).calendar();
             job.browser_url = document.URL;
             $scope.job = data.result;
+            stButtons.makeButtons(); // Render ShareThis
             loadingPage(false);
         });
 
