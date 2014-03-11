@@ -22,7 +22,7 @@
             .otherwise({
                 controller: "error404",
                 templateUrl: "/template/404.html"
-            })
+            });
     });
 
     servejob.controller('home', function($scope, $http) {
@@ -45,17 +45,19 @@
     servejob.controller('detail', function($scope, $http, $routeParams) {
         loadingPage(true);
         var permalink = $routeParams.permalink;
-        var req_list_job = {
+        var req_detail_job = {
             "method": "get",
             "url": config.api_route + "/jobs/getbypermalink/" + permalink,
             "cache": false
         };
 
-        $http(req_list_job).success(function (data) {
-            if (!data.result) {
+        $http(req_detail_job).success(function (data) {
+            var job = data.result;
+            if (!job) {
                 window.location = "/#/404";
                 return;
             }
+            job.created_on = moment(job.created_on).calendar();
             $scope.job = data.result;
             loadingPage(false);
         });

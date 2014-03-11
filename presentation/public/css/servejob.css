@@ -16,11 +16,6 @@ a:focus {
   padding: 40px 15px;
 }
 
-.status-message-top {
-    text-align: center;
-    border-radius: 0px 0px 10px 10px;
-}
-
 .servejob-div-principal {
     background-color: #FAFAFA;
     border-radius: 10px;
@@ -109,11 +104,27 @@ a:focus {
 #content-page, #loading-page {
     margin-top: -30px;
 }
+.div-search {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    padding-right: 15px;
+    width: 281px;
+    background-color: #7D2A2A;
+    border-radius: 0px 0px 10px 10px;
+    text-align: center;
+}
 .div-img-header {
     padding: 15px;
 }
 .job-company-name-home {
     color: #A8A8A8;
+}
+
+.job-created-home {
+    color: #A8A8DA;
+    float: right;
 }
 
 /*jobType*/
