@@ -8,7 +8,7 @@
                         <h2 class="servejob-title">{{job.jobTitle}}</h2>
                     </div>
                     <div class="float-buttomservejob">
-                        <a href="/#" class="btn btn-default btn-sm">
+                        <a href="/#!/" class="btn btn-default btn-sm">
                             <span class="glyphicon glyphicon-chevron-left"></span> Back
                         </a>
                     </div>
@@ -78,8 +78,30 @@
                             <div class="col-md-12 detail-jobDesc">{{job.howToApply}}</div>
                         </div>
                     </div>
+                    <div class="servejob-div-space">
+                        <h2 class="servejob-title">Share</h2>
+                    </div>
+                    <div class="servejob-div-space">
+                        <div class="row share-datails-div">
+                            <a ng-href="{{'http://www.facebook.com/sharer/sharer.php?u=' + job.browser_url}}" target="_blank">
+                                <img src="/img/social/facebook_32.png" alt="Share in facebook"/>
+                            </a>
+                            <a ng-href="{{'http://twitter.com/intent/tweet?text=' + job.browser_url}}" target="_blank">
+                                <img src="/img/social/twitter_32.png" alt="Share in twitter"/>
+                            </a>
+                            <a ng-href="{{'http://www.linkedin.com/shareArticle?mini=true&url=' + job.browser_url}}" target="_blank">
+                                <img src="/img/social/linkedin_32.png" alt="Share in linkedin"/>
+                            </a>
+                            <a ng-href="{{'https://plus.google.com/share?url=' + job.browser_url}}" target="_blank">
+                                <img src="/img/social/googleplus_32.png" alt="Share in googleplus"/>
+                            </a>
+                            <a ng-href="{{'mailto:?body=' + job.browser_url}}" target="_blank">
+                                <img src="/img/social/email_32.png" alt="Share in mail"/>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="row" style="text-align: center; margin-top: 10px;">
+                <div class="row delete-details-div">
                     <button ng-click="clickDelete()" class="btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-remove"></span> Delete
                     </button>
@@ -89,3 +111,5 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+
+<!-- ShareThis -->

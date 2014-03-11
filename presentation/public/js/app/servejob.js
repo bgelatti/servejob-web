@@ -1,7 +1,8 @@
 (function (angular, config) {
     var servejob = angular.module('servejob', ['ngRoute']);
 
-    servejob.config(function ($routeProvider) {
+    servejob.config(function ($routeProvider, $locationProvider) {
+        $locationProvider.html5Mode(false).hashPrefix('!');
         $routeProvider
             .when('/', {
                 controller: "home",
@@ -54,10 +55,11 @@
         $http(req_detail_job).success(function (data) {
             var job = data.result;
             if (!job) {
-                window.location = "/#/404";
+                window.location = "/#!/404";
                 return;
             }
             job.created_on = moment(job.created_on).calendar();
+            job.browser_url = document.URL;
             $scope.job = data.result;
             loadingPage(false);
         });
@@ -99,7 +101,7 @@
             $http(req_newjob).success(function (data) {
                 if (data.status) {
                     setTimeout(function(){
-                        window.location = "/";
+                        window.location = "/#!";
                     }, 1500);
                 }
 

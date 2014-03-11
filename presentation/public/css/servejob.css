@@ -127,6 +127,14 @@ a:focus {
     float: right;
 }
 
+.delete-details-div {
+    text-align: center;
+    margin-top: 10px;
+}
+.share-datails-div {
+    text-align: center;
+}
+
 /*jobType*/
 .Full-time {
     color: #fff;
