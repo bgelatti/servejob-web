@@ -1,0 +1,50 @@
+<div class="container container-template">
+    <div class="row" ng-controller="search">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="servejob-div-principal">
+                <div class="servejob-div-space float-job-title-div">
+                    <div class="float-titleservejob">
+                        <h2 class="servejob-title">Search Result</h2>
+                    </div>
+                    <div class="float-buttomservejob">
+                        <a href="/#!/" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-chevron-left"></span> Back
+                        </a>
+                    </div>
+                </div>
+                <div class="servejob-div-box" ng-repeat="job in jobs">
+                    <a href="/#!/job/{{job.permalink}}" class="job-link">
+                        <div class="servejob-div-space home-div-job">
+                            <div class="row">
+                                <div class="col-md-12 jobtitle">
+                                    <strong>{{job.jobTitle}}</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="list-inline">
+                                        <li class="{{job.jobType}}"><small>{{job.jobType}}</small></li>
+                                        <li><small><strong>-</strong></small></li>
+                                        <li class="job-company-name-home"><small>{{job.compName}}</small></li>
+                                        <li class="job-created-home">{{job.created_on}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="servejob-div-box" style="display: {{jobs ? 'none' : 'block'}}">
+                    <div class="servejob-div-space">
+                        <div class="row">
+                            <div class="col-md-12 job-search-empty-div">
+                                <strong>Sorry, no results containing all your search terms were found.</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

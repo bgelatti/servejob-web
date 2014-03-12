@@ -127,6 +127,10 @@ a:focus {
     float: right;
 }
 
+.job-search-empty-div {
+    text-align: center;
+}
+
 .delete-details-div {
     text-align: center;
     margin-top: 10px;

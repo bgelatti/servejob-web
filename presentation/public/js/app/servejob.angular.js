@@ -9,8 +9,8 @@
                 templateUrl: "/template/home.html"
             })
             .when('/jobs/search/:search', {
-                controller: "home",
-                templateUrl: "/template/home.html"
+                controller: "search",
+                templateUrl: "/template/search.html"
             })
             .when('/job/:permalink', {
                 controller: "detail",
@@ -31,14 +31,45 @@
     });
 
     servejob.controller('home', function($scope, $http, $routeParams, $location) {
-        activeSearch($scope, $location);
-        var searchTerm = $scope.searchQuery || $routeParams.search;
         loadingPage(true);
-        showJobs(searchTerm, config, $scope, $http);
+        var req_list_job = {
+            "method": "get",
+            "url": config.api_route + "/jobs/getalljobs",
+            "cache": true
+        };
+
+        $http(req_list_job).success(function (data) {
+            var list_jobs = data.result;
+            angular.forEach(list_jobs, function(key){
+                key.created_on = moment(key.created_on).format("MMM Do");
+            });
+            $scope.jobs = list_jobs;
+            loadingPage(false);
+        });
     });
 
-    servejob.controller('detail', function($scope, $http, $routeParams, $location) {
-        activeSearch($scope, $location);
+    servejob.controller('search', function($scope, $http, $routeParams, $location) {
+        loadingPage(true);
+        var searchTerm = $scope.searchQuery || $routeParams.search;
+        document.getElementById("search-input").value = searchTerm;
+
+        var req_search_job = {
+            "method": "get",
+            "url": config.api_route + "/jobs/search/" + searchTerm,
+            "cache": false
+        };
+
+        $http(req_search_job).success(function (data) {
+            var list_jobs = data.result;
+            angular.forEach(list_jobs, function(key){
+                key.created_on = moment(key.created_on).format("MMM Do");
+            });
+            $scope.jobs = list_jobs;
+            loadingPage(false);
+        });
+    });
+
+    servejob.controller('detail', function($scope, $http, $routeParams) {
         loadingPage(true);
         var permalink = $routeParams.permalink;
         var req_detail_job = {
@@ -79,8 +110,7 @@
         };
     });
 
-    servejob.controller('newjob', function($scope, $http, $location) {
-        activeSearch($scope, $location);
+    servejob.controller('newjob', function($scope, $http) {
         loadingPage(false);
         $scope.submit = function(job) {
             if (job.deletePassword !== job.confirmDeletePassword) {
@@ -119,55 +149,6 @@
     });
 
 }(angular, window.servejob));
-
-function activeSearch($scope, $location) {
-    $scope.$watch('searchQuery', function (term) {
-        if (term) {
-            $location.path("/jobs/search/" + term);
-        } else if ($location.path().indexOf('/jobs/search/') == 0){
-            $location.path("/");
-        }
-    });
-}
-
-function showJobs(searchTerm, config, $scope, $http) {
-    var req_list_job = {
-        "method": "get",
-        "url": config.api_route + "/jobs/getalljobs",
-        "cache": true
-    };
-    var req_search_job = {
-        "method": "get",
-        "url": config.api_route + "/jobs/search/" + searchTerm,
-        "cache": false
-    };
-
-    var makeJobs = function (list_jobs) {
-        angular.forEach(list_jobs, function(key){
-            key.created_on = moment(key.created_on).format("MMM Do");
-        });
-        $scope.jobs = list_jobs;
-        loadingPage(false);
-    };
-
-    var getallJobs = function () {
-        $http(req_list_job).success(function (data) {
-            makeJobs(data.result);
-        });
-    };
-
-    var searchJobs = function () {
-        $http(req_search_job).success(function (data) {
-            makeJobs(data.result);
-        });
-    };
-
-    if (searchTerm) {
-        searchJobs();
-    } else {
-        getallJobs();
-    }
-}
 
 function loadingPage(boolShow) {
     var loadpage = document.getElementById("loading-page");
