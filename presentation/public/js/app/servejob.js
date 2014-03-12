@@ -8,6 +8,10 @@
                 controller: "home",
                 templateUrl: "/template/home.html"
             })
+            .when('/jobs/search/:search', {
+                controller: "home",
+                templateUrl: "/template/home.html"
+            })
             .when('/job/:permalink', {
                 controller: "detail",
                 templateUrl: "/template/details.html"
@@ -26,24 +30,15 @@
             });
     });
 
-    servejob.controller('home', function($scope, $http) {
+    servejob.controller('home', function($scope, $http, $routeParams, $location) {
+        activeSearch($scope, $location);
+        var searchTerm = $scope.searchQuery || $routeParams.search;
         loadingPage(true);
-        var req_list_job = {
-            "method": "get",
-            "url": config.api_route + "/jobs/getalljobs",
-            "cache": true
-        };
-
-        $http(req_list_job).success(function (data) {
-            angular.forEach(data.result, function(key){
-                key.created_on = moment(key.created_on).format("MMM Do");
-            });
-            $scope.jobs = data.result;
-            loadingPage(false);
-        });
+        showJobs(searchTerm, config, $scope, $http);
     });
 
-    servejob.controller('detail', function($scope, $http, $routeParams) {
+    servejob.controller('detail', function($scope, $http, $routeParams, $location) {
+        activeSearch($scope, $location);
         loadingPage(true);
         var permalink = $routeParams.permalink;
         var req_detail_job = {
@@ -59,7 +54,6 @@
                 return;
             }
             job.created_on = moment(job.created_on).calendar();
-            job.browser_url = document.URL;
             $scope.job = data.result;
             stButtons.makeButtons(); // Render ShareThis
             loadingPage(false);
@@ -85,7 +79,8 @@
         };
     });
 
-    servejob.controller('newjob', function($scope, $http) {
+    servejob.controller('newjob', function($scope, $http, $location) {
+        activeSearch($scope, $location);
         loadingPage(false);
         $scope.submit = function(job) {
             if (job.deletePassword !== job.confirmDeletePassword) {
@@ -119,11 +114,60 @@
         };
     });
 
-    servejob.controller('error404', function($scope, $http) {
+    servejob.controller('error404', function() {
         loadingPage(false);
     });
 
 }(angular, window.servejob));
+
+function activeSearch($scope, $location) {
+    $scope.$watch('searchQuery', function (term) {
+        if (term) {
+            $location.path("/jobs/search/" + term);
+        } else if ($location.path().indexOf('/jobs/search/') == 0){
+            $location.path("/");
+        }
+    });
+}
+
+function showJobs(searchTerm, config, $scope, $http) {
+    var req_list_job = {
+        "method": "get",
+        "url": config.api_route + "/jobs/getalljobs",
+        "cache": true
+    };
+    var req_search_job = {
+        "method": "get",
+        "url": config.api_route + "/jobs/search/" + searchTerm,
+        "cache": false
+    };
+
+    var makeJobs = function (list_jobs) {
+        angular.forEach(list_jobs, function(key){
+            key.created_on = moment(key.created_on).format("MMM Do");
+        });
+        $scope.jobs = list_jobs;
+        loadingPage(false);
+    };
+
+    var getallJobs = function () {
+        $http(req_list_job).success(function (data) {
+            makeJobs(data.result);
+        });
+    };
+
+    var searchJobs = function () {
+        $http(req_search_job).success(function (data) {
+            makeJobs(data.result);
+        });
+    };
+
+    if (searchTerm) {
+        searchJobs();
+    } else {
+        getallJobs();
+    }
+}
 
 function loadingPage(boolShow) {
     var loadpage = document.getElementById("loading-page");
