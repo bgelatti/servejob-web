@@ -24,6 +24,10 @@ server.set('views', __dirname + '/presentation/views');
  if (process.env.PROTOTYPE) {
     server.use(express.basicAuth('a', 'b'));
 }
+
+if (config.prerender) {
+    app.use(require('prerender-node').set('prerenderToken', 'IHICuA1WA7Z7emahdIaY'));
+}
 server.set('port', config.port);
 server.disable('x-powered-by');
 server.use(express.logger('dev'));
