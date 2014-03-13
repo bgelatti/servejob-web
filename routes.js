@@ -10,10 +10,7 @@ function renderview(view) {
 }
 
 function routes($) {
-    $.get('/', renderview('layout'));
-    $.get('/rss', function(req, res){
-        res.redirect('http://api.servejob.com/rss');
-    });
+    $.get('*', renderview('layout'));
 }
 
 module.exports = routes;

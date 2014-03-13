@@ -7,9 +7,9 @@ var searchInput = (function () {
 
         timer = setTimeout(function() {
             if (value) {
-                window.location.hash = "/jobs/search/" + value;
+                window.location = "/jobs/search/" + value;
             } else if (window.location.hash.indexOf("/jobs/search/") === 0) {
-                window.location.hash = "/";
+                window.location = "/";
             }
         }, 400);
     }
