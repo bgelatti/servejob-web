@@ -76,6 +76,8 @@ a:focus {
 
 .servejob-details .servejob-title {
     font-size: 17px;
+    line-height: 0px;
+    text-transform: uppercase;
 }
 
 .div-buttom-title {
