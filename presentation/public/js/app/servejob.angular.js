@@ -32,11 +32,26 @@
             $locationProvider.hashPrefix('!');
     });
 
-    servejob.controller('mainController', function($scope) {
+    servejob.controller('mainController', function($scope, $location, $timeout) {
         $scope.seo = {
             pageTitle: '',
             pageDescription : ''
         };
+
+        var searchTimer;
+        var searchFunction = $scope.searchFunction = function (term) {
+            $timeout.cancel(searchTimer);
+            searchTimer = $timeout(function() {
+                if (term) {
+                    $location.path("/jobs/search/" + term);
+                } else if ($location.path().indexOf("/jobs/search/") === 0) {
+                    $location.path("/");
+                }
+            }, 400);
+        }
+        $scope.$watch('searchInput', function (term) {
+            searchFunction(term);
+        });
     });
 
     servejob.controller('home', function($scope, $http, $routeParams, $location) {
