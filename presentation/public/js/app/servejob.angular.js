@@ -119,7 +119,7 @@
             }
             job.created_on = moment(job.created_on).calendar();
             $scope.job = data.result;
-            stButtons.makeButtons(); // Render ShareThis
+            // stButtons.makeButtons(); // Render ShareThis
             $scope.$parent.seo = {
                 pageTitle: data.result.jobTitle,
                 pageDescription: ('Job detail: ' + data.result.jobTitle)
