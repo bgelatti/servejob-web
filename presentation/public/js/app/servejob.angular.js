@@ -2,7 +2,6 @@
     var servejob = angular.module('servejob', ['ngRoute']);
 
     servejob.config(function ($routeProvider, $locationProvider) {
-        $locationProvider.html5Mode(false).hashPrefix('!');
         $routeProvider
             .when('/', {
                 controller: "home",
@@ -28,10 +27,24 @@
                 controller: "error404",
                 templateUrl: "/template/404.html"
             });
+
+            $locationProvider.html5Mode(false);
+            $locationProvider.hashPrefix('!');
+    });
+
+    servejob.controller('mainController', function($scope) {
+        $scope.seo = {
+            pageTitle: '',
+            pageDescription : ''
+        };
     });
 
     servejob.controller('home', function($scope, $http, $routeParams, $location) {
         loadingPage(true);
+        $scope.$parent.seo = {
+            pageTitle: 'Home',
+            pageDescription: 'If you are seeking employment, their place here. No registration, no hassles, no ad, simple and objective.'
+        };
         var req_list_job = {
             "method": "get",
             "url": config.api_route + "/jobs/getalljobs",
@@ -48,10 +61,15 @@
         });
     });
 
-    servejob.controller('search', function($scope, $http, $routeParams, $location) {
+    servejob.controller('search', function($scope, $http, $routeParams) {
         loadingPage(true);
         var searchTerm = $scope.searchQuery || $routeParams.search;
         document.getElementById("search-input").value = searchTerm;
+
+        $scope.$parent.seo = {
+            pageTitle: 'Search',
+            pageDescription: ('Result of jobs fetched by the term: ' + searchTerm)
+        };
 
         var req_search_job = {
             "method": "get",
@@ -87,6 +105,10 @@
             job.created_on = moment(job.created_on).calendar();
             $scope.job = data.result;
             stButtons.makeButtons(); // Render ShareThis
+            $scope.$parent.seo = {
+                pageTitle: data.result.jobTitle,
+                pageDescription: ('Job detail: ' + data.result.jobTitle)
+            };
             loadingPage(false);
         });
 
@@ -112,6 +134,10 @@
 
     servejob.controller('newjob', function($scope, $http) {
         loadingPage(false);
+        $scope.$parent.seo = {
+            pageTitle: 'New Job',
+            pageDescription: 'Register a new job without bureaucracies! Simple, fast and easy.'
+        };
         $scope.submit = function(job) {
             if (job.deletePassword !== job.confirmDeletePassword) {
                 job.status = "Passwords must be identical";
@@ -144,8 +170,12 @@
         };
     });
 
-    servejob.controller('error404', function() {
+    servejob.controller('error404', function($scope) {
         loadingPage(false);
+        $scope.$parent.seo = {
+            pageTitle: 'Page Not Found',
+            pageDescription: 'Page Not Found'
+        };
     });
 
 }(angular, window.servejob));
