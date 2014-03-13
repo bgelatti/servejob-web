@@ -28,7 +28,7 @@
                 templateUrl: "/template/404.html"
             });
 
-            $locationProvider.html5Mode(false);
+            $locationProvider.html5Mode(true);
             $locationProvider.hashPrefix('!');
     });
 
@@ -99,7 +99,7 @@
         $http(req_detail_job).success(function (data) {
             var job = data.result;
             if (!job) {
-                window.location = "/#!/404";
+                window.location = "/404";
                 return;
             }
             job.created_on = moment(job.created_on).calendar();
@@ -153,7 +153,7 @@
             $http(req_newjob).success(function (data) {
                 if (data.status) {
                     setTimeout(function(){
-                        window.location = "/#!";
+                        window.location = "/";
                     }, 1500);
                 }
 
