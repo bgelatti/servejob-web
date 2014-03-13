@@ -26,7 +26,7 @@ server.set('views', __dirname + '/presentation/views');
 }
 
 if (config.prerender) {
-    app.use(require('prerender-node').set('prerenderToken', 'IHICuA1WA7Z7emahdIaY'));
+    server.use(require('prerender-node').set('prerenderToken', 'IHICuA1WA7Z7emahdIaY'));
 }
 server.set('port', config.port);
 server.disable('x-powered-by');
