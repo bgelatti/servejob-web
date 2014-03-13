@@ -25,12 +25,15 @@ server.set('views', __dirname + '/presentation/views');
     server.use(express.basicAuth('a', 'b'));
 }
 
+if (!process.env.DISABLE_EXPRESS_LOG) {
+   server.use(express.logger('dev'));
+}
+
 if (config.prerender) {
     server.use(require('prerender-node').set('prerenderToken', 'IHICuA1WA7Z7emahdIaY'));
 }
 server.set('port', config.port);
 server.disable('x-powered-by');
-server.use(express.logger('dev'));
 server.use(express.static(__dirname + '/presentation/public'));
 server.use(express.favicon());
 server.use(express.urlencoded());
