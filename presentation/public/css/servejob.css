@@ -78,16 +78,8 @@ a:focus {
     font-size: 17px;
 }
 
-.float-job-title-div {
-    height: 60px;
-}
-
-.float-titleservejob {
-    float: left;
-}
-
-.float-buttomservejob {
-    float: right;
+.div-buttom-title {
+    margin-bottom: 8px;
 }
 
 .site-header {
