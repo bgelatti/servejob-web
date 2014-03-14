@@ -1,12 +1,13 @@
 /**
  * Module dependencies.
  */
-var express = require('express');
-var hbs     = require('express-hbs');
-var format  = require('util').format;
-var routes  = require('./routes');
-var config  = require('./configuration');
-var server  = express();
+var express  = require('express');
+var hbs      = require('express-hbs');
+var format   = require('util').format;
+var routes   = require('./routes');
+var config   = require('./configuration');
+var newrelic = require('./newrelic.js');
+var server   = express();
 
 /**
  * View Configuration.
@@ -32,6 +33,7 @@ if (!process.env.DISABLE_EXPRESS_LOG) {
 if (config.prerender) {
     server.use(require('prerender-node').set('prerenderToken', 'IHICuA1WA7Z7emahdIaY'));
 }
+newrelic.start();
 server.set('port', config.port);
 server.disable('x-powered-by');
 server.use(express.static(__dirname + '/presentation/public'));

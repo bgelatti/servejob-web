@@ -16,6 +16,7 @@
     "express": "^3.4.8",
     "express-hbs": "^0.7.9",
     "moment": "~2.5.1",
-    "prerender-node": "^0.1.18"
+    "prerender-node": "^0.1.18",
+    "newrelic": "*"
   }
 }
