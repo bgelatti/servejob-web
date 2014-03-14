@@ -44,7 +44,7 @@
             searchTimer = $timeout(function() {
                 if (term) {
                     $location.path("/jobs/search/" + term);
-                } else if ($location.path().indexOf("/jobs/search/") === 0) {
+                } else if ($location.path().length === 13) {
                     $location.path("/");
                 }
             }, 400);
