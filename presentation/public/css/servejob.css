@@ -18,20 +18,13 @@ a:focus {
 
 .servejob-div-principal {
     background-color: #FAFAFA;
-    border-radius: 10px;
     width: 100%;
     min-height: 300px;
-
-    border: 1px solid #e1e8ed;
-    border-radius: 6px 6px 0 0;
-    background-clip: padding-box;
-    padding: 15px;
+    box-shadow: 0px 7px 61px 7px #888888;
+    border-radius: 3px;
 }
 .servejob-div-space {
-    min-height: 20px;
     padding: 0px 10px;
-    border-bottom: 1px solid #e8e8e8;
-    border-radius: 5px 5px 0 0;
 }
 .servejob-title {
     color: #66757f;
@@ -45,6 +38,10 @@ a:focus {
 }
 .home-div-job:hover {
     background-color: #ECECEC;
+}
+.div-buttonsActions {
+    text-align: right;
+    margin-top: 8px;
 }
 .job-link, .job-link:visited {
     color: #000;
@@ -66,8 +63,11 @@ a:focus {
 }
 
 .loading-div {
-    margin-top: 105px;
     text-align: center;
+}
+
+.loading-div img {
+    margin-top: 20%;
 }
 
 .detail-jobDesc {
@@ -131,6 +131,10 @@ a:focus {
 }
 .share-datails-div {
     text-align: center;
+}
+
+.delete-and-submit-buttom {
+    margin-bottom: 10px;
 }
 
 /*jobType*/
