@@ -37,7 +37,7 @@ newrelic.start();
 server.set('port', config.port);
 server.disable('x-powered-by');
 server.use(express.static(__dirname + '/presentation/public'));
-server.use(express.favicon());
+server.use(express.favicon(__dirname + '/presentation/public/img/favicon.ico'));
 server.use(express.urlencoded());
 server.use(express.json());
 server.use(express.methodOverride());
