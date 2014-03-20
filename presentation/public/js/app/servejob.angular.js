@@ -1,5 +1,5 @@
 (function (angular, config) {
-    var servejob = angular.module('servejob', ['ngRoute']);
+    var servejob = angular.module('servejob', ['ngRoute', 'infinite-scroll']);
 
     servejob.config(function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -55,23 +55,45 @@
     });
 
     servejob.controller('home', function($scope, $http, $routeParams, $location) {
-        loadingPage(true);
         $scope.$parent.seo = {
             pageTitle: 'Home',
             pageDescription: 'If you are seeking employment, their place here. No registration, no hassles, no ad, simple and objective.'
         };
-        var req_list_job = {
-            "method": "get",
-            "url": config.api_route + "/jobs/getalljobs",
-            "cache": true
+        var page = 1;
+        var total_pages = 0;
+
+        var getJobs = function (callback) {
+            var req_list_job = {
+                "method": "get",
+                "url": config.api_route + "/jobs/getalljobs?jobQty=8&page=" + page,
+                "cache": false
+            };
+
+            $http(req_list_job).success(function (data) {
+                total_pages = data.result.total_pages;
+                var list_jobs = data.result.items;
+                angular.forEach(list_jobs, function(key){
+                    key.created_on = moment(key.created_on).format("MMM Do");
+                });
+                callback(list_jobs);
+            });
         };
 
-        $http(req_list_job).success(function (data) {
-            var list_jobs = data.result.items;
-            angular.forEach(list_jobs, function(key){
-                key.created_on = moment(key.created_on).format("MMM Do");
-            });
-            $scope.jobs = list_jobs;
+        $scope.loadMore  = function() {
+            if (page !== total_pages) {
+                console.log(page);
+                page += 1;
+                getJobs(function (jobs){
+                    for(var i in jobs) {
+                        $scope.jobs.push(jobs[i]);
+                    }
+                });
+            }
+        }
+
+        loadingPage(true);
+        getJobs(function (jobs){
+            $scope.jobs = jobs;
             loadingPage(false);
         });
     });
