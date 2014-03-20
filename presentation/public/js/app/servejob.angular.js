@@ -67,7 +67,7 @@
         };
 
         $http(req_list_job).success(function (data) {
-            var list_jobs = data.result;
+            var list_jobs = data.result.items;
             angular.forEach(list_jobs, function(key){
                 key.created_on = moment(key.created_on).format("MMM Do");
             });
