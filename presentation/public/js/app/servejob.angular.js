@@ -4,27 +4,21 @@
     servejob.config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
-                controller: "home",
                 templateUrl: "/template/home.html"
             })
             .when('/jobs/search/:search', {
-                controller: "search",
                 templateUrl: "/template/search.html"
             })
             .when('/job/:permalink', {
-                controller: "detail",
                 templateUrl: "/template/details.html"
             })
             .when('/newjob', {
-                controller: "newjob",
                 templateUrl: "/template/newjob.html"
             })
             .when('/404', {
-                controller: "error404",
                 templateUrl: "/template/404.html"
             })
             .otherwise({
-                controller: "error404",
                 templateUrl: "/template/404.html"
             });
 
