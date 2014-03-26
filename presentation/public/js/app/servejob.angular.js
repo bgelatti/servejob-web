@@ -4,23 +4,29 @@
     servejob.config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: "/template/home.html"
-            })
-            .when('/jobs/search/:search', {
-                templateUrl: "/template/search.html"
-            })
-            .when('/job/:permalink', {
-                templateUrl: "/template/details.html"
-            })
-            .when('/newjob', {
-                templateUrl: "/template/newjob.html"
-            })
-            .when('/404', {
-                templateUrl: "/template/404.html"
-            })
-            .otherwise({
-                templateUrl: "/template/404.html"
-            });
+                 controller: "home",
+                 templateUrl: "/template/home.html"
+             })
+             .when('/jobs/search/:search', {
+                 controller: "search",
+                 templateUrl: "/template/search.html"
+             })
+             .when('/job/:permalink', {
+                 controller: "detail",
+                 templateUrl: "/template/details.html"
+             })
+             .when('/newjob', {
+                 controller: "newjob",
+                 templateUrl: "/template/newjob.html"
+             })
+             .when('/404', {
+                 controller: "error404",
+                 templateUrl: "/template/404.html"
+             })
+             .otherwise({
+                 controller: "error404",
+                 templateUrl: "/template/404.html"
+             });
 
             $locationProvider.html5Mode(true);
             $locationProvider.hashPrefix('!');
