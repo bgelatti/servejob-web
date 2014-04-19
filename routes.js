@@ -9,8 +9,16 @@ function renderview(view) {
     };
 }
 
+function sitemap(req, res, next) {
+    if (req.url === '/sitemap') {
+        res.redirect('http://api.servejob.com/sitemap');
+    } else {
+        next();
+    }
+}
+
 function routes($) {
-    $.get('*', renderview('layout'));
+    $.get('*', sitemap, renderview('layout'));
 }
 
 module.exports = routes;
