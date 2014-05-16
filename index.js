@@ -26,10 +26,6 @@ server.set('views', __dirname + '/presentation/views');
     server.use(express.basicAuth('a', 'b'));
 }
 
-if (!process.env.DISABLE_EXPRESS_LOG) {
-   server.use(express.logger('dev'));
-}
-
 if (config.prerender) {
     server.use(require('prerender-node').set('prerenderToken', 'IHICuA1WA7Z7emahdIaY'));
 }
@@ -37,15 +33,7 @@ newrelic.start();
 server.set('port', config.port);
 server.disable('x-powered-by');
 server.use(express.static(__dirname + '/presentation/public'));
-server.use(express.favicon(__dirname + '/presentation/public/img/favicon.ico'));
-server.use(express.urlencoded());
-server.use(express.json());
-server.use(express.methodOverride());
-server.use(server.router);
-server.use(function (req, res, next ){
-    res.status(404);
-    res.redirect("/#!/404");
-});
+
 /**
  * Routes Configuration.
  */

@@ -19,6 +19,11 @@ function sitemap(req, res, next) {
 
 function routes($) {
     $.get('*', sitemap, renderview('layout'));
+
+    $.use(function (req, res, next ){
+        res.status(404);
+        res.redirect("/#!/404");
+    });
 }
 
 module.exports = routes;
