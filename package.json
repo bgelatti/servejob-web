@@ -13,7 +13,7 @@
     "url": "git@bitbucket.org:koshoo/servejob-client-web.git"
   },
   "author": "Koshoo",
-  "license": "Copyright",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.2.0",
     "express-hbs": "^0.7.9",
