@@ -31,7 +31,6 @@ if (config.prerender) {
 }
 newrelic.start();
 server.set('port', config.port);
-server.disable('x-powered-by');
 server.use(express.static(__dirname + '/presentation/public'));
 
 /**
